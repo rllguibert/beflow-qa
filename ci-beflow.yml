@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: origin/qa
+        uses: origin/beflow-qa
 
       - name: Setup Node.js
-        uses: uses: origin/qa
+        uses: uses: origin/beflow-qa
         with:
           node-version: 16
 
@@ -28,10 +28,10 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: origin/qa
+        uses: origin/beflow-qa
 
        - name: Setup Node.js
-        uses: uses: origin/qa
+        uses: uses: origin/beflow-qa
         with:
           node-version: 16
 
