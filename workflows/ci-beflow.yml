@@ -1,1 +1,48 @@
+name: QA BF editor CI
+on: [push, pull_request]
+  
+jobs:
+  test-chromium:
+    name: Test Chromium (Ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: origin/qa
 
+      - name: Setup Node.js
+        uses: uses: origin/qa
+        with:
+          node-version: 16
+
+      - name: Install NPM Dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Install Chromium Playwright
+        run: npx playwright install chromium && npx playwright install-deps chromium
+
+      - name: Run Chromium E2E Tests (Service Worker)
+        run: npm run test.chromium
+
+  test-webkit:
+    name: Test WebKit (MacOS)
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: origin/qa
+
+       - name: Setup Node.js
+        uses: uses: origin/qa
+        with:
+          node-version: 16
+
+      - name: Install NPM Dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build
+        run: npm run build
+
+      - name: Install WebKit Playwright
+        run: npx playwright install webkit && npx playwright install-deps webkit
+
+      - name: Run WebKit E2E Tests
+        run: npm run test.webkit    
