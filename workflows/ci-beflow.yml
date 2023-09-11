@@ -29,10 +29,10 @@ jobs:
           runs-on: ubuntu-latest
           steps:
             - name: Checkout
-              uses: origin/beflow-qa
+              uses: origin/Testqat
       
             - name: Setup Node.js
-              uses: uses: origin/beflow-qa
+              uses: origin/Testqat
               with:
                 node-version: 16
       
