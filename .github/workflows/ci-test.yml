@@ -1,0 +1,36 @@
+name: QAt CI
+on: [push, pull_request]
+
+jobs:
+  test-chromium:
+    name: Test Chromium (Ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Cache NPM Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: Install NPM Dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Install Chromium Playwright
+        run: npx playwright install chromium && npx playwright install-deps chromium
+
+      - name: Run Chromium E2E Tests (Service Worker)
+        run: npm run test.chromium
+      
+      
