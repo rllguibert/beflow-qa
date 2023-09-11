@@ -29,7 +29,7 @@ test.describe("BOX Component Testing",() => {
   });
 
   // Probar la imagen desde local cargando una campaña. 
-  test.skip('Images inside from local', async ({ page }) => {
+  test('Images inside from local', async ({ page }) => {
     // Add image url  inside Box  
    await todoPage.loginCampaign(page); 
    await todoPage.loadImageLocal(page,'Funciona');
@@ -54,7 +54,7 @@ test.describe("BOX Component Testing",() => {
    await todoPage.addVideo('https://youtu.be/l7gTMTr69N0');
    await page.getByRole('button', { name: 'ChatOption Preview' }).click();
    await page.waitForTimeout(10000);
-   await page.getByTestId('bubble').click({force: true});
+   await page.getByTestId('bubble-bubble-0').click({force: true});
    await page.getByRole('button', { name: 'Close' }).click();
   });
 
