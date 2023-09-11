@@ -1,0 +1,43 @@
+{
+  "cookies": [
+    {
+      "name": "_ga",
+      "value": "GA1.1.751221913.1687857323",
+      "domain": ".opseeker.com",
+      "path": "/",
+      "expires": 1722417322.805213,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_4YYFLQXEPC",
+      "value": "GS1.1.1687857322.1.1.1687857473.0.0.0",
+      "domain": ".opseeker.com",
+      "path": "/",
+      "expires": 1722417473.526242,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://tulum.opseeker.com",
+      "localStorage": [
+        {
+          "name": "aws.cognito.identity-id.eu-west-1:bd8bf843-1c8d-4232-80b9-9646ddf45d11",
+          "value": "eu-west-1:6f202ef4-68b0-4751-8dbe-5095a668e9f3"
+        },
+        {
+          "name": "userDbotUUID",
+          "value": "\"3aa49644-fa96-4e87-8d14-feb06c18a40c\""
+        },
+        {
+          "name": "i18nextLng",
+          "value": "es"
+        }
+      ]
+    }
+  ]
+}
