@@ -27,7 +27,16 @@ jobs:
       - name: Install Chromium Playwright
         run: npx playwright install chromium && npx playwright install-deps chromium
 
-      - name: Run Chromium E2E Tests (Service Worker)
-        run: npm run test.chromium
+      - name: Run Chatbot E2E Tests 
+        run: npx playwright test chatbot/basicFunctional.spec.ts --headed --project=1920x1080
+        
+      - name: Run Box E2E Tests 
+        run: npx playwright test chatbot/box.spec.ts --headed --project=1920x1080
+        
+      - name: Run Button E2E Tests 
+        run: npx playwright test chatbot/box.spec.ts --headed --project=1920x1080
+        
+      - name: Run Variables E2E Tests 
+        run: npx playwright test chatbot/variableCreate.spec.ts --headed --project=1920x1080
       
       
