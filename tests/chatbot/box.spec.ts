@@ -29,7 +29,7 @@ test.describe("BOX Component Testing",() => {
   });
 
   // Probar la imagen desde local cargando una campaña. 
-  test.skip('Images inside from local', async ({ page }) => {
+  test('Images inside from local', async ({ page }) => {
     // Add image url  inside Box  
    await todoPage.loginCampaign(page); 
    await todoPage.loadImageLocal(page,'Funciona');
