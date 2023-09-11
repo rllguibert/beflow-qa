@@ -38,5 +38,43 @@ jobs:
         
       - name: Run Variables E2E Tests 
         run: npx playwright test chatbot/variableCreate.spec.ts --project=1920x1080
-      
-      
+
+  test-webkit:
+      name: Test WebKit (MacOS)
+      runs-on: macos-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+
+        - name: Setup Node.js
+          uses: actions/setup-node@v1
+          with:
+            node-version: 16
+
+        - name: Cache NPM Dependencies
+          uses: actions/cache@v2
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: ${{ runner.os }}-node-
+
+        - name: Install NPM Dependencies
+          run: npm ci
+
+        - name: Install WebKit Playwright
+          run: npx playwright install webkit && npx playwright install-deps webkit
+
+        - name: Run WebKit E2E Tests
+          run: npm run test.webkit  
+
+        - name: Run Chatbot E2E Tests 
+          run: npx playwright test chatbot/basicFunctional.spec.ts --project=1920x1080
+        
+        - name: Run Box E2E Tests 
+          run: npx playwright test chatbot/box.spec.ts --project=1920x1080
+          
+        - name: Run Button E2E Tests 
+          run: npx playwright test chatbot/box.spec.ts --project=1920x1080
+          
+        - name: Run Variables E2E Tests 
+          run: npx playwright test chatbot/variableCreate.spec.ts --project=1920x1080  
