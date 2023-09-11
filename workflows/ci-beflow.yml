@@ -1,48 +1,49 @@
-name: QA BF editor CI
-on: [push, pull_request]
-  
+name: Test
+
+# **What it does**: Runs our tests.
+# **Why we have it**: We want our tests to pass before merging code.
+# **Who does it impact**: Docs engineering, open-source engineering contributors.
+
+on:
+  workflow_dispatch:
+  merge_group:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
-  test-chromium:
-    name: Test Chromium (Ubuntu)
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: origin/Testqat
-
-      - name: Setup Node.js
-        uses: origin/Testqat
+   steps:
+      - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975
+        id: set-matrix
         with:
-          node-version: 16
+          script: |           
+            return [
+              { name: 'chatbot', path: 'tests/chatbot/', },
+              { name: 'campañas', path: 'tests/campañas/', }
+              
 
-      - name: Install NPM Dependencies
-        run: npm ci --legacy-peer-deps
+   test-chromium:
+          name: Test Chromium (Ubuntu)
+          runs-on: ubuntu-latest
+          steps:
+            - name: Checkout
+              uses: origin/beflow-qa
+      
+            - name: Setup Node.js
+              uses: uses: origin/beflow-qa
+              with:
+                node-version: 16
+      
+            - name: Install NPM Dependencies
+              run: npm ci --legacy-peer-deps
+      
+            - name: Install Chromium Playwright
+              run: npx playwright install chromium && npx playwright install-deps chromium
+      
+            - name: Run Chromium E2E Tests (Service Worker)
+              run: npm run test.chromium
 
-      - name: Install Chromium Playwright
-        run: npx playwright install chromium && npx playwright install-deps chromium
 
-      - name: Run Chromium E2E Tests (Service Worker)
-        run: npm run test.chromium
-
-  test-webkit:
-    name: Test WebKit (MacOS)
-    runs-on: macos-latest
-    steps:
-      - name: Checkout
-        uses: origin/Testqat
-
-       - name: Setup Node.js
-         uses: origin/Testqat
-         with:
-          node-version: 16
-
-      - name: Install NPM Dependencies
-        run: npm ci --legacy-peer-deps
-
-      - name: Build
-        run: npm run build
-
-      - name: Install WebKit Playwright
-        run: npx playwright install webkit && npx playwright install-deps webkit
-
-      - name: Run WebKit E2E Tests
-        run: npm run test.webkit    
+      
