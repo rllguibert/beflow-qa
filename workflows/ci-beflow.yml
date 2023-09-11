@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: origin/qa
+        uses: origin/Testqat
 
       - name: Setup Node.js
-        uses: uses: origin/qa
+        uses: origin/Testqat
         with:
           node-version: 16
 
@@ -28,11 +28,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: origin/qa
+        uses: origin/Testqat
 
        - name: Setup Node.js
-        uses: uses: origin/qa
-        with:
+         uses: origin/Testqat
+         with:
           node-version: 16
 
       - name: Install NPM Dependencies
