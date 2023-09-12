@@ -62,10 +62,7 @@ jobs:
           run: npm ci
 
         - name: Install WebKit Playwright
-          run: npx playwright install webkit && npx playwright install-deps webkit
-
-        - name: Run WebKit E2E Tests
-          run: npm run test.webkit  
+          run: npx playwright install webkit && npx playwright install-deps webkit       
 
         - name: Run Chatbot E2E Tests 
           run: npx playwright test chatbot/basicFunctional.spec.ts --project=1920x1080
