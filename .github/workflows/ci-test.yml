@@ -34,10 +34,25 @@ jobs:
         run: npx playwright test chatbot/box.spec.ts --project=1920x1080
         
       - name: Run Button E2E Tests 
-        run: npx playwright test chatbot/box.spec.ts --project=1920x1080
+        run: npx playwright test chatbot/boxCamp.spec.ts --project=1920x1080
+
+      - name: Run Button E2E Tests 
+        run: npx playwright test chatbot/button.spec.ts --project=1920x1080
+
+      - name: Run Button E2E Tests 
+        run: npx playwright test chatbot/buttonCamp.spec.ts --project=1920x1080  
         
       - name: Run Variables E2E Tests 
         run: npx playwright test chatbot/variableCreate.spec.ts --project=1920x1080
+
+      - name: Run Variables E2E Tests 
+        run: npx playwright test campañas/afpChat.spec.ts --project=1920x1080
+
+      - name: Run Variables E2E Tests 
+        run: npx playwright test chatbot/tulumsmartsurvey.spec.ts --project=1920x1080
+
+       - name: Run Variables E2E Tests 
+        run: npx playwright test chatbot/fci.spec.ts --project=1920x1080     
 
   test-webkit:
       name: Test WebKit (MacOS)
@@ -64,17 +79,31 @@ jobs:
         - name: Install WebKit Playwright
           run: npx playwright install webkit && npx playwright install-deps webkit
 
-        - name: Run WebKit E2E Tests
-          run: npm run test.webkit  
-
         - name: Run Chatbot E2E Tests 
-          run: npx playwright test chatbot/basicFunctional.spec.ts --project=1920x1080
+        run: npx playwright test chatbot/basicFunctional.spec.ts --project=1920x1080
         
         - name: Run Box E2E Tests 
           run: npx playwright test chatbot/box.spec.ts --project=1920x1080
           
         - name: Run Button E2E Tests 
-          run: npx playwright test chatbot/box.spec.ts --project=1920x1080
+          run: npx playwright test chatbot/boxCamp.spec.ts --project=1920x1080
+
+        - name: Run Button E2E Tests 
+          run: npx playwright test chatbot/button.spec.ts --project=1920x1080
+
+        - name: Run Button E2E Tests 
+          run: npx playwright test chatbot/buttonCamp.spec.ts --project=1920x1080  
           
         - name: Run Variables E2E Tests 
-          run: npx playwright test chatbot/variableCreate.spec.ts --project=1920x1080  
+          run: npx playwright test chatbot/variableCreate.spec.ts --project=1920x1080
+        
+        - name: Run Variables E2E Tests 
+        run: npx playwright test campañas/afpChat.spec.ts --project=1920x1080
+
+        - name: Run Variables E2E Tests 
+        run: npx playwright test chatbot/tulumsmartsurvey.spec.ts --project=1920x1080
+
+        - name: Run Variables E2E Tests 
+        run: npx playwright test chatbot/fci.spec.ts --project=1920x1080     
+  
+
