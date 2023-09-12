@@ -289,7 +289,7 @@ export class TodoPage {
     await page.getByRole('menuitem', { name: 'Load' }).getByText('Load').click();
     await page.getByText('rosana').click();
     await page.getByRole('menuitem', { name: 'Campaigns' }).click();
-    await page.getByText('/qanewchanges').click();
+    await page.getByText('/qae2etest').click();
     await page.getByText('/conversations').click();
     await page.getByText('/conversation.json').click();
 
