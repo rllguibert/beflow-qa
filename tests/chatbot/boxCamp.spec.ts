@@ -11,6 +11,8 @@ test.describe("BOX Component Testing",() => {
   test.beforeEach(async ({ page }) => {
     todoPage = new TodoPage(page);
     await todoPage.goto('https://dboteditor-qa.opseeker.com/');
+    await todoPage.loginCampaign(page);
+    await todoPage.cargaChatfromCampaign(page);
     await page.getByRole('menuitem', { name: 'ChapterAdd' }).locator('svg').click();
     await page.getByRole('button', { name: 'Box' }).first().click();     
   });
@@ -27,6 +29,14 @@ test.describe("BOX Component Testing",() => {
     await todoPage.addImage('Funciona');
     await todoPage.checkPreviewButton(page);
   });
+
+  // Probar la imagen desde local cargando una campaña. 
+  test.skip('Images inside from local', async ({ page }) => {
+    // Add image url  inside Box  
+   await todoPage.loginCampaign(page); 
+   await todoPage.loadImageLocal(page,'Funciona');
+   await todoPage.checkPreviewButton(page);
+ });
 
   test('Gif url inside Box Component test', async ({ page }) => {
       // Add Gif url  inside Box  
@@ -46,7 +56,7 @@ test.describe("BOX Component Testing",() => {
    await todoPage.addVideo('https://youtu.be/l7gTMTr69N0');
    await page.getByRole('button', { name: 'ChatOption Preview' }).click();
    await page.waitForTimeout(10000);
-   await page.getByTestId('bubble-bubble-0').click({force: true});
+   await page.getByTestId('bubble').click({force: true});
    await page.getByRole('button', { name: 'Close' }).click();
   });
 
