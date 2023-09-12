@@ -70,15 +70,15 @@ export class TodoPage {
     this.verificationText = this.page.locator('div').filter({ hasText: /^Verification typeNoneENES$/ }).locator('svg');
     this.numberButton = this.page.getByText('Number', { exact: true });
     this.ahpButton = page.getByText('AHP', { exact: true });
-    this.optionOne = page.getByPlaceholder('Option 1');
-    this.optionTwo = page.getByPlaceholder('Option 2'); 
-    this.optionThree = page.getByPlaceholder('Option 3');
-    this.optionFour = page.getByPlaceholder('Option 4'); 
-    this.optionFive = page.getByPlaceholder('Option 5');
-    this.optionSix = page.getByPlaceholder('Option 6'); 
+    this.optionOne = page.locator('div').filter({ hasText: /^Option index: 0$/ }).getByPlaceholder('Option');
+    this.optionTwo = page.locator('div').filter({ hasText: /^Option index: 1$/ }).getByPlaceholder('Option');
+    this.optionThree = page.locator('div').filter({ hasText: /^Option index: 2$/ }).getByPlaceholder('Option');
+    this.optionFour = page.locator('div').filter({ hasText: /^Option index: 3$/ }).getByPlaceholder('Option');
+    this.optionFive = page.locator('div').filter({ hasText: /^Option index: 4$/ }).getByPlaceholder('Option');
+    this.optionSix = page.locator('div').filter({ hasText: /^Option index: 5$/ }).getByPlaceholder('Option');
     this.optionMultichoice = page.getByText('Multiple choice', { exact: true });
     this.addOptions = page.getByRole('button', { name: '+ Add option' });
-    this.linkertButton=  page.getByText('Linkert', { exact: true });
+    this.linkertButton=  page.getByText('Likert', { exact: true });
     //this.notasButton: Locator;*/
 
   }
@@ -226,7 +226,7 @@ export class TodoPage {
 
 
   async addLinkert(page: Page) {
-    await page.getByRole('button', { name: 'Box and two buttons' }).click();
+    await page.getByRole('button', { name: 'Box and two buttons' }).click();    
     await page.getByPlaceholder('Write text here').fill('linkert');
     await page.locator('canvas').first().click({
       position: {
@@ -234,7 +234,7 @@ export class TodoPage {
         y: 553
       }
     });
-    await page.getByTestId('view-type-select').locator('svg').click();
+    await this.buttonDrop.click();
     await this.linkertButton.click();
     await this.previewButton.click();
     await page.locator('div > div:nth-child(4) > div > div').first().click();
@@ -248,8 +248,8 @@ export class TodoPage {
     await this.optionOne.click();
     await this.optionOne.fill('One');
     await this.optionTwo.click();
-    await this.optionTwo.fill('Two');
-    await page.getByRole('button', { name: '+ Add option' }).click();
+    await this.optionTwo.fill('Two');    
+    await this.addOptions.click();
     await this.optionThree.click();
     await this.optionThree.fill('Three');
     await this.addOptions.click();
@@ -261,20 +261,15 @@ export class TodoPage {
     await this.addOptions.click();
     await this.optionSix.click();
     await this.optionSix.fill('Six');
-    await this.addOptions.click();
     await this.previewButton.click();
     await page.getByText('One').click();
-    await page.getByTestId('bubble').locator('div').filter({ hasText: 'Two' }).nth(3).click();
+    await page.getByText('Two').click();
     await page.getByText('Six').click();
-    await page.getByTestId('bubble').getByRole('textbox').click();
-    await page.getByTestId('bubble').getByRole('textbox').fill('AAAAAAA');
-    await page.getByRole('button', { name: 'Answer' }).click();
+    await page.getByTestId('bubble-bubble-0').getByRole('textbox').click();
+    await page.getByTestId('bubble-bubble-0').getByRole('textbox').fill('AAAAAAA');
+    await page.getByTestId('bubble-no-testid').click();
     await page.close();
   }
-
-
-
-
   async checkPreviewButton(page: Page) {
     await this.previewButton.click();
     await page.waitForTimeout(10000);
