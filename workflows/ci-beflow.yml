@@ -2,36 +2,108 @@ name: QAt CI
 on: [push, pull_request]
 
 jobs:
-   steps:
-      - uses: actions/github-script@98814c53be79b1d30f795b907e553d8679345975
-        id: set-matrix
+  test-chromium:
+    name: Test Chromium (Ubuntu)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
-          script: |           
-            return [
-              { name: 'chatbot', path: 'tests/chatbot/', },
-              { name: 'campañas', path: 'tests/campañas/', }
-              
+          node-version: 16
 
-   test-chromium:
-          name: Test Chromium (Ubuntu)
-          runs-on: ubuntu-latest
-          steps:
-            - name: Checkout
-              uses: origin/Testqat
-      
-            - name: Setup Node.js
-              uses: origin/Testqat
-              with:
-                node-version: 16
-      
-            - name: Install NPM Dependencies
-              run: npm ci --legacy-peer-deps
-      
-            - name: Install Chromium Playwright
-              run: npx playwright install chromium && npx playwright install-deps chromium
-      
-            - name: Run Chromium E2E Tests (Service Worker)
-              run: npm run test.chromium
+      - name: Cache NPM Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
 
+      - name: Install NPM Dependencies
+        run: npm ci
 
-      
+      - name: Install Chromium Playwright
+        run: npx playwright install chromium && npx playwright install-deps chromium
+
+      - name: Run Chatbot E2E Tests 
+        run: npx playwright test chatbot/basicFunctional.spec.ts --project=1920x1080
+        
+      - name: Run Box E2E Tests 
+        run: npx playwright test chatbot/box.spec.ts --project=1920x1080
+        
+      - name: Run Button E2E Tests 
+        run: npx playwright test chatbot/boxCamp.spec.ts --project=1920x1080
+
+      - name: Run Button E2E Tests 
+        run: npx playwright test chatbot/button.spec.ts --project=1920x1080
+
+      - name: Run Button E2E Tests 
+        run: npx playwright test chatbot/buttonCamp.spec.ts --project=1920x1080  
+        
+      - name: Run Variables E2E Tests 
+        run: npx playwright test chatbot/variableCreate.spec.ts --project=1920x1080
+
+      - name: Run Variables E2E Tests 
+        run: npx playwright test campañas/afpChat.spec.ts --project=1920x1080
+
+      - name: Run Variables E2E Tests 
+        run: npx playwright test chatbot/tulumsmartsurvey.spec.ts --project=1920x1080
+
+       - name: Run Variables E2E Tests 
+        run: npx playwright test chatbot/fci.spec.ts --project=1920x1080     
+
+  test-webkit:
+      name: Test WebKit (MacOS)
+      runs-on: macos-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+
+        - name: Setup Node.js
+          uses: actions/setup-node@v1
+          with:
+            node-version: 16
+
+        - name: Cache NPM Dependencies
+          uses: actions/cache@v2
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: ${{ runner.os }}-node-
+
+        - name: Install NPM Dependencies
+          run: npm ci
+
+        - name: Install WebKit Playwright
+          run: npx playwright install webkit && npx playwright install-deps webkit
+
+        - name: Run Chatbot E2E Tests 
+        run: npx playwright test chatbot/basicFunctional.spec.ts --project=1920x1080
+        
+        - name: Run Box E2E Tests 
+          run: npx playwright test chatbot/box.spec.ts --project=1920x1080
+          
+        - name: Run Button E2E Tests 
+          run: npx playwright test chatbot/boxCamp.spec.ts --project=1920x1080
+
+        - name: Run Button E2E Tests 
+          run: npx playwright test chatbot/button.spec.ts --project=1920x1080
+
+        - name: Run Button E2E Tests 
+          run: npx playwright test chatbot/buttonCamp.spec.ts --project=1920x1080  
+          
+        - name: Run Variables E2E Tests 
+          run: npx playwright test chatbot/variableCreate.spec.ts --project=1920x1080
+        
+        - name: Run Variables E2E Tests 
+        run: npx playwright test campañas/afpChat.spec.ts --project=1920x1080
+
+        - name: Run Variables E2E Tests 
+        run: npx playwright test chatbot/tulumsmartsurvey.spec.ts --project=1920x1080
+
+        - name: Run Variables E2E Tests 
+        run: npx playwright test chatbot/fci.spec.ts --project=1920x1080     
+  
+
