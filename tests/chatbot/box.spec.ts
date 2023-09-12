@@ -50,7 +50,7 @@ test.describe("BOX Component Testing",() => {
    await page.getByRole('button', { name: 'Close' }).click();
   });
 
-  test('Link inside Box Component test', async ({ page }) => {   
+  test.only('Link inside Box Component test', async ({ page }) => {   
     // Add Link inside Box  
     await todoPage.addLink('https://en.wikipedia.org/wiki/Marathon');
     await page.getByRole('button', { name: 'ChatOption Preview' }).click();
