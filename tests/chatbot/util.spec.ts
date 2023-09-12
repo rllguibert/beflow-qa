@@ -210,13 +210,12 @@ export class TodoPage {
   async addAHP(page: Page) {
     await this.buttonDrop.click();
     await this.ahpButton.click();
-    await this.optionOne.click();
-    await this.optionOne.fill('One');
-    await this.optionTwo.click();
-    await this.optionTwo.fill('Two');
-    await page.waitForTimeout(10000);
+    await page.getByPlaceholder('Option 1').click();
+    await page.getByPlaceholder('Option 1').fill('One');
+    await page.getByPlaceholder('Option 2').click();
+    await page.getByPlaceholder('Option 2').fill('Two');
     await this.previewButton.click();
-    await page.pause();
+    await page.getByText('Son igualmente importantes').click();
     // probar de forma manual desplazamiento de la barra
     await page.waitForTimeout(10000);
 
