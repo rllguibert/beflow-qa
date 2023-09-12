@@ -17,7 +17,7 @@ test.describe("BOX Component Testing",() => {
     await page.getByRole('button', { name: 'Box' }).first().click();     
   });
 
-  test('Text inside Box Component test', async ({ page }) => {
+  test.only('Text inside Box Component test', async ({ page }) => {
     // Add text inside Box
     await todoPage.addText('Hola Box Element');
     await todoPage.checkPreviewButton(page);  
@@ -33,7 +33,6 @@ test.describe("BOX Component Testing",() => {
   // Probar la imagen desde local cargando una campaña. 
   test('Images inside from local', async ({ page }) => {
     // Add image url  inside Box  
-   await todoPage.loginCampaign(page); 
    await todoPage.loadImageLocal(page,'Funciona');
    await todoPage.checkPreviewButton(page);
  });
