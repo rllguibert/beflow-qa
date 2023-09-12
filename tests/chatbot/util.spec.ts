@@ -271,10 +271,6 @@ export class TodoPage {
     await page.getByRole('button', { name: 'Answer' }).click();
     await page.close();
   }
-
-
-
-
   async checkPreviewButton(page: Page) {
     await this.previewButton.click();
     await page.waitForTimeout(10000);
