@@ -16,7 +16,7 @@ test.describe("Beflow Editor Testing",() => {
       
   
 test.describe("Menu Bar Testing",() => {
-  test.only('A new blank file should be created->New File', async ({ page }) => {    
+  test('A new blank file should be created->New File', async ({ page }) => {    
     const newFileButton =  page.getByRole('button', { name: 'Yes, create a new file' });
     const newtitle = page.getByTitle('New File').locator('div').nth(1);
     const banner = page.getByRole('banner');

@@ -22,7 +22,7 @@ test.describe("Variable Create test",() => {
     
   });     
 
-  test.skip('Boolean variable', async ({ page }) => {
+  test('Boolean variable', async ({ page }) => {
     const nombreVariable = page.getByPlaceholder('Nombre de la variable...');
     const borrarVariable = page.getByRole('button', { name: 'FormTrash' });
     const createButton = page.getByRole('button', { name: 'FormCheckmark Create' });
