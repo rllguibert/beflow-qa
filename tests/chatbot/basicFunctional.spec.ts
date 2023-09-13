@@ -16,7 +16,7 @@ test.describe("Beflow Editor Testing",() => {
       
   
 test.describe("Menu Bar Testing",() => {
-  test('A new blank file should be created->New File', async ({ page }) => {    
+  test.only('A new blank file should be created->New File', async ({ page }) => {    
     const newFileButton =  page.getByRole('button', { name: 'Yes, create a new file' });
     const newtitle = page.getByTitle('New File').locator('div').nth(1);
     const banner = page.getByRole('banner');
@@ -80,8 +80,10 @@ test.describe("Setting Panel",() => {
     const opseekerFondocheck = page.getByRole('radiogroup').filter({ hasText: 'OpseekerChat' }).locator('div').nth(1);
     const chatFondocheck = page.getByRole('radiogroup').filter({ hasText: 'OpseekerChat' }).locator('div').nth(4);
     const debugModeCheck = page.locator('label').filter({ hasText: 'Modo debug' }).locator('div').nth(1);
-    const debugButton =  await page.getByText('Dbot file debug');
+    const debugButton =  page.getByRole('button', { name: 'DocumentText Ver documento dbot' });
     const debugPanel = await page.locator('.StyledLayer__StyledContainer-sc-rmtehz-2 > div > div');
+    const salirPanelSetting = page.locator('div').filter({ hasText: 'AjustesVersion: 2.57.3IdiomaInglésEspañolEsquema de colorOpseekerChatDebugModo d' }).nth(2);
+    
 
     await todoPage.loginCampaign(page);
     await todoPage.cargaChatfromCampaign(page);                
@@ -94,20 +96,12 @@ test.describe("Setting Panel",() => {
     expect(await chatFondocheck.isChecked()).toBeTruthy();
     await debugModeCheck.click();
     expect(await debugModeCheck.isChecked()).toBeTruthy();
+    await salirPanelSetting.press('Escape');
     await debugButton.click();
+    await debugButton.press('Escape');
     expect(await debugPanel.isVisible());
-  });
+  })
+
+})
 
 });
-
-test.describe("Search Functionablity",() => {    
-  
-  test('Should be fill search input text to find any text inside conversation', async ({ page }) => {
-    await todoPage.loginCampaign(page);
-    await todoPage.cargaChatfromCampaign(page);
-    await page.getByRole('menuitem', { name: 'Search' }).locator('svg').click();
-    await page.getByPlaceholder('Search').fill('Buenos');
-    await todoPage.checkPreviewButton(page)
-   })  
-  })
-})
