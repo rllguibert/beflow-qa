@@ -80,7 +80,7 @@ jobs:
           run: npx playwright install webkit && npx playwright install-deps webkit
 
         - name: Run Chatbot E2E Tests 
-        run: npx playwright test chatbot/basicFunctional.spec.ts --project=1920x1080
+          run: npx playwright test chatbot/basicFunctional.spec.ts --project=1920x1080
         
         - name: Run Box E2E Tests 
           run: npx playwright test chatbot/box.spec.ts --project=1920x1080
@@ -97,13 +97,12 @@ jobs:
         - name: Run Variables E2E Tests 
           run: npx playwright test chatbot/variableCreate.spec.ts --project=1920x1080
         
-        - name: Run Variables E2E Tests 
-        run: npx playwright test campañas/afpChat.spec.ts --project=1920x1080
+        - name: Run AFP E2E Tests 
+          run: npx playwright test campañas/afpChat.spec.ts --project=1920x1080
 
-        - name: Run Variables E2E Tests 
-        run: npx playwright test campañas/tulumsmartsurvey.spec.ts --project=1920x1080
+        - name: Run Tulum E2E Tests 
+          run: npx playwright test campañas/tulumsmartsurvey.spec.ts --project=1920x1080
 
-        - name: Run Variables E2E Tests 
-        run: npx playwright test campañas/fci.spec.ts --project=1920x1080     
-  
+        - name: Run FCI E2E Tests 
+          run: npx playwright test campañas/fci.spec.ts --project=1920x1080   
 
