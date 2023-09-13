@@ -49,10 +49,10 @@ jobs:
         run: npx playwright test campañas/afpChat.spec.ts --project=1920x1080
 
       - name: Run Variables E2E Tests 
-        run: npx playwright test chatbot/tulumsmartsurvey.spec.ts --project=1920x1080
+        run: npx playwright test campañas/tulumsmartsurvey.spec.ts --project=1920x1080
 
        - name: Run Variables E2E Tests 
-        run: npx playwright test chatbot/fci.spec.ts --project=1920x1080     
+        run: npx playwright test campañas/fci.spec.ts --project=1920x1080     
 
   test-webkit:
       name: Test WebKit (MacOS)
@@ -97,13 +97,12 @@ jobs:
         - name: Run Variables E2E Tests 
           run: npx playwright test chatbot/variableCreate.spec.ts --project=1920x1080
         
-        - name: Run Variables E2E Tests 
+        - name: Run AFP E2E Tests 
           run: npx playwright test campañas/afpChat.spec.ts --project=1920x1080
 
-        - name: Run Variables E2E Tests 
+        - name: Run Tulum E2E Tests 
           run: npx playwright test campañas/tulumsmartsurvey.spec.ts --project=1920x1080
 
-        - name: Run Variables E2E Tests 
-          run: npx playwright test campañas/fci.spec.ts --project=1920x1080     
-  
+        - name: Run FCI E2E Tests 
+          run: npx playwright test campañas/fci.spec.ts --project=1920x1080   
 
