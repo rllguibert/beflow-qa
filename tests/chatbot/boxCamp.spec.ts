@@ -17,7 +17,7 @@ test.describe("BOX Component Testing",() => {
     await page.getByRole('button', { name: 'Box' }).first().click();     
   });
 
-  test.only('Text inside Box Component test', async ({ page }) => {
+  test('Text inside Box Component test', async ({ page }) => {
     // Add text inside Box
     await todoPage.addText('Hola Box Element');
     await todoPage.checkPreviewButton(page);  
