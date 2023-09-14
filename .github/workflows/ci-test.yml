@@ -48,13 +48,13 @@ jobs:
       - name: Run Search E2E Tests 
         run: npx playwright test chatbot/search.spec.ts --project=1920x1080
 
-      - name: Run AFP E2E Tests 
+      - name: Run AFP Camp E2E Tests 
         run: npx playwright test campañas/afpChat.spec.ts --project=1920x1080
 
-      - name: Run Tulum E2E Tests 
+      - name: Run Tulum Camp E2E Tests 
         run: npx playwright test campañas/tulumsmartsurvey.spec.ts --project=1920x1080
         
-      - name: Run FCI E2E Tests 
+      - name: Run FCI Camp E2E Tests 
         run: npx playwright test campañas/fci.spec.ts --project=1920x1080     
 
   test-webkit:
@@ -103,11 +103,11 @@ jobs:
         - name: Run Search E2E Tests 
           run: npx playwright test chatbot/search.spec.ts --project=webkit
         
-        - name: Run AFP E2E Tests 
+        - name: Run AFP Camp E2E Tests 
           run: npx playwright test campañas/afpChat.spec.ts --project=webkit
 
-        - name: Run Tulum E2E Tests 
+        - name: Run Tulum Camp E2E Tests 
           run: npx playwright test campañas/tulumsmartsurvey.spec.ts --project=webkit
 
-        - name: Run FCI E2E Tests 
+        - name: Run FCI Camp E2E Tests 
           run: npx playwright test campañas/fci.spec.ts --project=webkit
