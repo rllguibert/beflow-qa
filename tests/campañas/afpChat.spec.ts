@@ -152,6 +152,7 @@ test.describe("Emprendedor Tests",() => {
         await nose.click();
         await funciona.click();
         await yesss.click();
+        await page.waitForTimeout(1000);
         await pocoNec.click();
         await page.getByText('Que cada vez que realice un aporte voluntario, su empleador aporte la misma cantidad a su fondo', { exact: true }).click();
         await page.getByText('Tener descuentos adicionales a los del Club de Amigos y poder participar en sort').click();
@@ -192,7 +193,6 @@ test.describe("Experto Tests",() => {
         const btwo = page.getByTestId('bubble-button-2');
         const go = page.getByTestId('bubble-button-128');
         const goTwo = page.getByTestId('bubble-button-138');
-        const next = page.getByTestId('bubble-button-134');
         const moreTen = page.getByTestId('bubble-button-5');
         const yes = page.getByTestId('bubble-button-143');
         const moreTell = page.getByTestId('bubble-button-147');
@@ -272,7 +272,7 @@ test.describe("Hedonista Tests",() => {
         const yes = page.getByTestId('bubble-button-174');
         const imageYes = page.getByTestId('bubble-button-209');
         const moreTelll = page.getByTestId('bubble-button-159');
-        const lossMe = page.getByTestId('bubble-button-152');
+        const nadaN = page.getByTestId('bubble-button-84');
         const morePorcentage = page.getByTestId('bubble-button-54');
         const verdadero = page.getByTestId('bubble-button-16');
         const entendido = page.getByTestId('bubble-button-164');
@@ -304,17 +304,20 @@ test.describe("Hedonista Tests",() => {
         await page.getByText('Tengo la intención de hacerlo, pero aún no lo he hecho').click();
         await page.locator('div').filter({ hasText: /^La jubilación está muy lejos$/ }).nth(1).click();
         await responder.click();
-       // await page.pause();
+       
         await yess.click();        
         await justOne.click();        
         await funciona.click();
         await notT.click();
-        await page.getByText('Nada necesario').click();
+        //await page.pause();
+        await nadaN.click();
         await page.getByText('Flexibilidad para realizarlos (cuando y cuanto quiera)').click();
         await responder.click();
         await page.getByText('No recibir información a tiempo de las ganancias de sus aportes').click();
         await responder.click();
         await nervioso.click();
+        await page.waitForTimeout(1000);
+        
         await hedonista.click();
         await acepto.click();
         await emailEnter(page);
@@ -336,9 +339,11 @@ async function sacrifcioTest(page: Page) {
   const consejos = page.getByTestId('bubble-button-201');
   
   await intro.click();
-  await page.locator('#selectionBox > div > div > div > div > div').first().click(); // sin data-testid
-  await page.locator('#selectionBox > div > div > div:nth-child(2) > div > div').first().click(); // sin data-testid
-  await page.locator('#selectionBox > div > div > div:nth-child(3) > div > div').first().click(); // sin data-testid
+  await page.waitForTimeout(20000);
+   // sin data-testid
+  await page.locator('#selectionBox > div > div > div > div > div').first().click();
+  await page.locator('#selectionBox > div > div > div:nth-child(2) > div > div').first().click();
+  await page.locator('#selectionBox > div > div > div:nth-child(3) > div > div').first().click();
   await sacrificio.click();
   await page.getByText('Ahorrando en efectivo en casa').click(); // sin data-testid
   await page.getByText('Depositando en una cuenta de ahorro de una institución financiera').click(); // sin data-testid
