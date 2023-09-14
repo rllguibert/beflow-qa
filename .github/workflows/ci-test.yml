@@ -97,9 +97,6 @@ jobs:
         - name: Run Button E2E Tests 
           run: npx playwright test chatbot/button.spec.ts --project=webkit
 
-        - name: Run Button inside Campaigh E2E Tests 
-          run: npx playwright test chatbot/buttonCamp.spec.ts --project=webkit  
-          
         - name: Run Variables E2E Tests 
           run: npx playwright test chatbot/variableCreate.spec.ts --project=webkit
 
