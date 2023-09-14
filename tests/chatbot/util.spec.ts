@@ -104,13 +104,15 @@ export class TodoPage {
 
 
   async loadImageLocal(page: Page, text: string) {
+    
     await this.buttonDrop.click();
     await this.optionImage.click();
+    await page.waitForTimeout(30000);
     const fileChooserPromise = page.waitForEvent('filechooser');
     await page.getByText('browse').click();
     const fileChooser = await fileChooserPromise;
     await page.waitForTimeout(1000);
-    await fileChooser.setFiles('tests/imageLocal.jpg');
+    await fileChooser.setFiles('tests/imageLocal.jpg');    
     await this.inputAltText.click();
     await this.inputAltText.fill(text);
   }
