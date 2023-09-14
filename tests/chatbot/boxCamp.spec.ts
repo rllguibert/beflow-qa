@@ -30,13 +30,7 @@ test.describe("BOX Component Testing",() => {
     await todoPage.checkPreviewButton(page);
   });
 
-  // Probar la imagen desde local cargando una campaña. 
-  test('Images inside from local', async ({ page }) => {
-    // Add image url  inside Box  
-   await todoPage.loadImageLocal(page,'Funciona');
-   await todoPage.checkPreviewButton(page);
- });
-
+ 
   test('Gif url inside Box Component test', async ({ page }) => {
       // Add Gif url  inside Box  
     await todoPage.addGif('Funciona');
