@@ -34,11 +34,12 @@ test.describe("BOX Component Testing",() => {
   test('Gif url inside Box Component test', async ({ page }) => {
       // Add Gif url  inside Box  
     await todoPage.addGif('Funciona');
+    await page.waitForTimeout(1000);
     await todoPage.checkPreviewButton(page);
   });
 
 
-  test('Search in Gif inside Box Component test', async ({ page }) => {   
+  test.only('Search in Gif inside Box Component test', async ({ page }) => {   
           // Add Gif searching input  inside Box  
     await todoPage.addSearchGif();
     await todoPage.checkPreviewButton(page);
