@@ -243,6 +243,7 @@ test.describe("Experto Tests",() => {
         await page.getByText('Falta de interés por guardar dinero hasta su jubilación').click();
         await responder.click();
         await nervioso.click();
+        await page.waitForTimeout(1000);
         //await page.pause();
         await experto.click();
         await acepto.click();
@@ -413,6 +414,7 @@ async function neutroTest(page: Page) {
   await nose.click();
   await nocredito.click();
   await consejos.click();
+  //await page.pause();
   await expect(neutroProfile).toContainText(['¡Efectivamente! Ahorrar es guardar dinero, PERO con una ganancia. No te olvides']);
   await page.waitForTimeout(500);
 }
