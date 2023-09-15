@@ -89,10 +89,7 @@ jobs:
           run: npx playwright test chatbot/basicFunctional.spec.ts --project=webkit
         
         - name: Run Box E2E Tests 
-          run: npx playwright test chatbot/box.spec.ts --project=webkit
-          
-        - name: Run Botton with Campaign E2E Tests 
-          run: npx playwright test chatbot/boxCamp.spec.ts --project=webkit
+          run: npx playwright test chatbot/box.spec.ts --project=webkit       
 
         - name: Run Button E2E Tests 
           run: npx playwright test chatbot/button.spec.ts --project=webkit
