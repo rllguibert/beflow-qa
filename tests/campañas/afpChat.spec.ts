@@ -299,7 +299,6 @@ test.describe("Hedonista Tests",() => {
 
 })
 
-
 async function sacrifcioTest(page: Page) {
   const sacrificoProfile = await page.getByText('¡Ahorrar puede ser al sencillo y motivador! Aquí van los consejos: 1. Ten objeti');
   const intro = page.getByTestId('bubble-button-185');
@@ -307,8 +306,7 @@ async function sacrifcioTest(page: Page) {
   const responder = page.getByTestId('bubble-no-testid');
   const todoGasto = page.getByTestId('bubble-button-31');
   const avcereto = page.getByTestId('bubble-button-36');
-  const consejos = page.getByTestId('bubble-button-201');
-  
+  const consejos = page.getByTestId('bubble-button-201');  
   await intro.click();
   await page.waitForTimeout(20000);
    // sin data-testid
@@ -319,7 +317,7 @@ async function sacrifcioTest(page: Page) {
   await page.getByText('Ahorrando en efectivo en casa').click(); // sin data-testid
   await page.getByText('Depositando en una cuenta de ahorro de una institución financiera').click(); // sin data-testid
   await responder.click();
-  await page.waitForTimeout(10000); 
+  await page.waitForTimeout(30000); 
   await page.getByText('Tienes un plan mensual de seguimiento a tus ingresos y gastos').click(); 
   await page.getByText('Tienes un registro constante de tus gastos').click();
   await responder.click();
@@ -328,9 +326,6 @@ async function sacrifcioTest(page: Page) {
   await consejos.click();
   await expect(sacrificoProfile).toContainText(['¡Ahorrar puede ser al sencillo y motivador! Aquí van los consejos: 1. Ten objeti']);
 }
-
-
-
 
 async function planearTest(page: Page) {
   const planearProfile = await page.locator('#conversationContainer div').filter({ hasText: 'Sentirte tranquilo, respaldado y seguro no tiene precio. Por ello aquí te damos ' }).nth(4);
@@ -349,7 +344,7 @@ async function planearTest(page: Page) {
   await page.getByText('Depositando en una cuenta de ahorro de una institución financiera').click();
   await page.getByText('Dando dinero a la familia para ahorrar en su nombre').click();
   await responder.click();
-  await page.waitForTimeout(10000); 
+  await page.waitForTimeout(30000); 
   await page.getByText('Separas el dinero para pagar las facturas del mes y el dinero de gastos del día ').click();
   await page.getByText('Tomas nota de las próximas facturas para asegurarte de pagarlas').click();
   await responder.click();
@@ -380,7 +375,7 @@ async function neutroTest(page: Page) {
   await page.getByText('Ahorrando en otra institución fuera del sistema financiero').click();
   await page.getByText('Dando dinero a la familia para ahorrar en su nombre').click();
   await responder.click();
-  await page.waitForTimeout(10000); 
+  await page.waitForTimeout(30000); 
   await page.getByText('Tienes un registro constante de tus gastos').click();
   await page.getByText('Separas el dinero para pagar las facturas del mes y el dinero de gastos del día ').click();
   await responder.click();
