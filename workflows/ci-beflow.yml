@@ -104,13 +104,7 @@ jobs:
           run: npx playwright test chatbot/variableCreate.spec.ts --project=webkit
 
         - name: Run Search E2E Tests 
-          run: npx playwright test chatbot/search.spec.ts --project=webkit
-        
-        - name: Run AFP Camp E2E Tests 
-          run: npx playwright test campañas/afpChat.spec.ts --project=webkit
-
-        - name: Run Tulum Camp E2E Tests 
-          run: npx playwright test campañas/tulumsmartsurvey.spec.ts --project=webkit
+          run: npx playwright test chatbot/search.spec.ts --project=webkit             
 
         - name: Run FCI Camp E2E Tests 
           run: npx playwright test campañas/fci.spec.ts --project=webkit

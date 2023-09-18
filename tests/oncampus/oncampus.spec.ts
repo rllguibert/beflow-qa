@@ -10,6 +10,9 @@ test.describe("Oncampus project Testing",() => {
     test.beforeEach(async ({ page }) => {
       todoPage = new TodoPage(page);
       await todoPage.goto('https://main-staging.oncampusabroad.com/');
+
+      // Cname de prod de Oncampus
+      //await todoPage.goto('https://on-campus.opseeker.com/oncampus-abroad/rotterdam-eaie-event-2023/index.html');
       
       });        
 

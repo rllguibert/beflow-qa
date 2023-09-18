@@ -215,16 +215,12 @@ test.describe("Experto Tests",() => {
         await goTwo.click();                
         await moreTen.click();        
         await yes.click();
-        await moreTell.click();
-        
-        await superCl.click();
-        
-        await less.click();
-        
+        await moreTell.click();        
+        await superCl.click();        
+        await less.click();        
         await moreTelll.click();
         await entendido.click();
-        await falso.click();
-        
+        await falso.click();        
         await yess.click();
         await imageYes.click();
         await page.getByText('Si, es entre el 5% y 10% de mi salario').click();
@@ -232,8 +228,7 @@ test.describe("Experto Tests",() => {
         await page.getByText('Pienso que, independientemente de mis aportes, la pensión que me den será sufici').click();
         await responder.click();        
         await notT.click();
-        await funciona.click();
-        
+        await funciona.click();        
         await notTt.click();
         await page.getByText('Necesario', { exact: true }).click();
         await page.getByText('Facilidad para realizarlos').click();
@@ -289,10 +284,8 @@ test.describe("Hedonista Tests",() => {
         await go.click();
         await btwo.click();
         await next.click();        //cono +1
-        await moreTen.click();        //apren +1
-        
-        await nextQ.click();        //apren +1
-        
+        await moreTen.click();        //apren +1        
+        await nextQ.click();        //apren +1        
         await exactSame.click();
         await moreTelll.click();
         await entendido.click();
@@ -304,8 +297,7 @@ test.describe("Hedonista Tests",() => {
         await page.getByText('No sé cómo hacerlo').click();
         await page.getByText('Tengo la intención de hacerlo, pero aún no lo he hecho').click();
         await page.locator('div').filter({ hasText: /^La jubilación está muy lejos$/ }).nth(1).click();
-        await responder.click();
-       
+        await responder.click();       
         await yess.click();        
         await justOne.click();        
         await funciona.click();
@@ -317,8 +309,7 @@ test.describe("Hedonista Tests",() => {
         await page.getByText('No recibir información a tiempo de las ganancias de sus aportes').click();
         await responder.click();
         await nervioso.click();
-        await page.waitForTimeout(1000);
-        
+        await page.waitForTimeout(1000);        
         await hedonista.click();
         await acepto.click();
         await emailEnter(page);
@@ -337,8 +328,7 @@ async function sacrifcioTest(page: Page) {
   const responder = page.getByTestId('bubble-no-testid');
   const todoGasto = page.getByTestId('bubble-button-31');
   const avcereto = page.getByTestId('bubble-button-36');
-  const consejos = page.getByTestId('bubble-button-201');
-  
+  const consejos = page.getByTestId('bubble-button-201');  
   await intro.click();
   await page.waitForTimeout(20000);
    // sin data-testid
@@ -349,6 +339,7 @@ async function sacrifcioTest(page: Page) {
   await page.getByText('Ahorrando en efectivo en casa').click(); // sin data-testid
   await page.getByText('Depositando en una cuenta de ahorro de una institución financiera').click(); // sin data-testid
   await responder.click();
+ // await page.pause();
   await page.getByText('Tienes un plan mensual de seguimiento a tus ingresos y gastos').click(); 
   await page.getByText('Tienes un registro constante de tus gastos').click();
   await responder.click();
@@ -368,8 +359,7 @@ async function planearTest(page: Page) {
   const responder = page.getByTestId('bubble-no-testid');
   const parteGasto = page.getByTestId('bubble-button-32');
   const proconst = page.getByTestId('bubble-button-37');
-  const consejos = page.getByTestId('bubble-button-201');
-  
+  const consejos = page.getByTestId('bubble-button-201');  
   await intro.click();
   await page.locator('div:nth-child(4) > div > div').first().click(); // sin data-testid
   await page.locator('#selectionBox > div > div > div:nth-child(5) > div > div').first().click(); // sin data-testid
@@ -398,8 +388,7 @@ async function neutroTest(page: Page) {
   const responder = page.getByTestId('bubble-no-testid');
   const nose = page.getByTestId('bubble-button-33');
   const  nocredito = page.getByTestId('bubble-button-38');
-  const consejos = page.getByTestId('bubble-button-201');
-  
+  const consejos = page.getByTestId('bubble-button-201');  
   await intro.click();
   await page.locator('div:nth-child(4) > div > div').first().click();
   await page.locator('#selectionBox > div > div > div:nth-child(5) > div > div').first().click(); // sin data-testid
@@ -413,12 +402,10 @@ async function neutroTest(page: Page) {
   await responder.click();
   await nose.click();
   await nocredito.click();
-  await consejos.click();
-  //await page.pause();
+  await consejos.click();  
   await expect(neutroProfile).toContainText(['¡Efectivamente! Ahorrar es guardar dinero, PERO con una ganancia. No te olvides']);
   await page.waitForTimeout(500);
 }
-
 
 
 async function emailEnter(page: Page) {

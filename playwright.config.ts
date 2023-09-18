@@ -31,7 +31,8 @@ export default defineConfig({
     viewport: {width: 180, height: 1080},
     actionTimeout: 20 * 1000,
     navigationTimeout: 50 * 1000,    
-    isMobile: false
+    isMobile: false,
+    headless: true
   },
 
   /* Configure projects for major browsers */
