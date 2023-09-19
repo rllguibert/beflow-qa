@@ -16,19 +16,18 @@ test.describe("Oncampus Conversation Testing",() => {
       
       });       
 
+      test('test', async ({ page }) => {
+        await page.getByTestId('bubble-button-1').getByRole('button', { name: 'Zoom image' }).click();
+        await page.getByText('Yes, of course').click();
+        await page.getByText('Yes!').click();
+        await page.locator('#selectionBox > div > div > div:nth-child(2) > div > div').first().click();
+        await page.getByTestId('submit_textInput').click();
+        await page.getByTestId('bubble-button-21').getByRole('button', { name: 'Zoom image' }).click();
+        await page.getByTestId('bubble-button-31').getByRole('button', { name: 'Zoom image' }).click();
+        await page.getByText('I accept').click();
+        await page.getByPlaceholder('Type your e-mail, please').click();
+        await page.getByPlaceholder('Type your e-mail, please').fill('rosanallilart@beway.org');
+        await page.getByTestId('submit_textInput').click();
+      });
 
-test('test', async ({ page }) => {
-    await page.getByTestId('bubble-button-1').getByRole('button', { name: 'Zoom image' }).click();
-    await page.getByText('Yes, of course').click();
-    await page.getByText('Yes!').click();
-    await page.getByText('1 Not important at all').click();
-    await page.getByPlaceholder('Please type why would you recommend a travel insurance over another').click();
-    await page.getByPlaceholder('Please type why would you recommend a travel insurance over another').fill('rhrthrthrthtrh');
-    await page.getByPlaceholder('Please type why would you recommend a travel insurance over another').press('Enter');
-    await page.getByTestId('bubble-button-21').getByRole('button', { name: 'Zoom image' }).click();
-    await page.getByTestId('bubble-button-30').getByRole('button', { name: 'Zoom image' }).click();
-    await page.getByTestId('bubble-button-32').locator('div').click();
-    await page.getByPlaceholder('Type your e-mail, please').click();
-    await page.getByPlaceholder('Type your e-mail, please').fill('rosanallilart@gmail.com');
-    await page.getByPlaceholder('Type your e-mail, please').press('Enter');
-  });
+});
