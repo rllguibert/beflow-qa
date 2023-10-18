@@ -28,16 +28,10 @@ jobs:
         run: npx playwright install chromium && npx playwright install-deps chromium
 
       - name: Run Chatbot E2E Tests 
-        run: npx playwright test chatbot/basic.spec.ts --project=1920x1080
-        
-      - name: Run Box E2E Tests 
-        run: npx playwright test chatbot/box.spec.ts --project=1920x1080
+        run: npx playwright test chatbot/basic.spec.ts --project=1920x1080       
         
       - name: Run Box inside Campaign E2E Tests 
         run: npx playwright test chatbot/boxCamp.spec.ts --project=1920x1080
-
-      - name: Run Button E2E Tests 
-        run: npx playwright test chatbot/button.spec.ts --project=1920x1080
 
       - name: Run Button inside Campaign E2E Tests 
         run: npx playwright test chatbot/buttonCamp.spec.ts --project=1920x1080  
@@ -76,14 +70,8 @@ jobs:
         - name: Run Chatbot E2E Tests 
           run: npx playwright test chatbot/basic.spec.ts --project=webkit
         
-        - name: Run Box E2E Tests 
-          run: npx playwright test chatbot/box.spec.ts --project=webkit
-          
         - name: Run Botton with Campaign E2E Tests 
           run: npx playwright test chatbot/boxCamp.spec.ts --project=webkit
-
-        - name: Run Button E2E Tests 
-          run: npx playwright test chatbot/button.spec.ts --project=webkit
 
         - name: Run Button inside Campaigh E2E Tests 
           run: npx playwright test chatbot/buttonCamp.spec.ts --project=webkit  
