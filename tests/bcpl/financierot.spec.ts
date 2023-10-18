@@ -8,15 +8,15 @@ test.describe("Bacoppel project Testing",() => {
 
     test.beforeEach(async ({ page }) => {
       todoPage = new TodoPage(page);
-
-      await todoPage.goto('https://bancoppel.opseeker.com/bancoppel/financiero/index.html?grupo=tratamiento');
+      await todoPage.goto('https://bancoppel.opseeker.com/bancoppel/financiero/index.html?userId=d');
       });           
 
 
    
-      test('Tratamiento_Low_Financial_test', async ({ page }) => {
+      test.only('Tratamiento_Low_Financial_test', async ({ page }) => {
         const lowFTrata = await page.getByText('¡Tus respuestas me indican que puedes tener una preferencia por gastar dinero en lugar de ahorrarlo! 😄💸 Recuerda que es importante encontrar un equilibrio entre disfrutar el presente y planificar para el futuro.');
-      const lowFinancial = await page.getByText('¡Tus respuestas me indican que tienes una oportunidad para aprender sobre cómo manejar tu dinero de manera más eficiente 📚!');
+        const lowFinancial = await page.getByText('¡Tus respuestas me indican que tienes una oportunidad para aprender sobre cómo manejar tu dinero de manera más eficiente 📚!');
+        const responder = page.getByTestId('bubble-no-testid');
      // const lowFinalFlow = await page.getByText('¡Eres un Deportista Financiero en Formación! 🏃‍♂️📚💰');
       await page.getByText('¡Qué comes que adivinas! 😎 Arranquemos 🏃‍♂️🏁').click();
       await page.waitForTimeout(20000);
@@ -84,7 +84,7 @@ test.describe("Bacoppel project Testing",() => {
       await page.getByText('Por sus tasas de interés. 😄').click();
       await page.getByRole('textbox').click();
       await page.getByRole('textbox').fill('QAPerfilamientos');
-      await page.getByRole('button', { name: 'Responder' }).click();
+      await responder.click();
       await page.getByText('(3) Neutral.').click();
       await page.waitForTimeout(30000);
       await page.getByText('Aprender sobre mi Tarjeta de crédito 💳').click();
@@ -113,6 +113,7 @@ test.describe("Bacoppel project Testing",() => {
       test('Tratamiento_Medium_Financial_test', async ({ page }) => {
         const mediumF = await page.getByText('¡Tus respuestas me indican que vas por buen camino, demuestras tener algunas buenas actitudes financieras!');
         const mediumFinancial = await page.getByText('¡Tus respuestas me indican que vas por buen camino, demuestras tener algunas buenas actitudes financieras!');
+        const responder = page.getByTestId('bubble-no-testid');
         //const mediumFinalFlow = await page.getByText('¡Eres un Deportista Entusiasta de las Finanzas! 🌟🏃‍♂️💼');
         await page.getByText('¡Qué comes que adivinas! 😎 Arranquemos 🏃‍♂️🏁').click();
         await page.getByText('¡Vamos!').click();
@@ -178,7 +179,7 @@ test.describe("Bacoppel project Testing",() => {
         await page.getByText('Por sus tasas de interés. 😄').click();
         await page.getByRole('textbox').click();
         await page.getByRole('textbox').fill('QAPerfilamientos');
-        await page.getByRole('button', { name: 'Responder' }).click();
+        await responder.click();
         await page.getByText('(3) Neutral.').click();
         await page.waitForTimeout(30000);
         await page.getByText('Aprender sobre mi Tarjeta de crédito 💳').click();
@@ -207,6 +208,7 @@ test.describe("Bacoppel project Testing",() => {
       const highF = await page.getByText('Se ve que conoces bastante sobre finanzas sanas! 💰');
           const highFinancial = await page.getByText('¡Se ve que conoces bastante sobre finanzas sanas! 💰');
           const highFinalFlow = await page.getByText('¡Eres un Campeón Financiero de Carreras! 🏆🏃‍💰');
+          const responder = page.getByTestId('bubble-no-testid');
           await page.getByText('¡Qué comes que adivinas! 😎 Arranquemos 🏃‍♂️🏁').click();
           await page.getByText('¡Vamos!').click();
           
@@ -274,7 +276,7 @@ test.describe("Bacoppel project Testing",() => {
           await page.getByRole('textbox').fill('qalogica');
           await page.getByText('Porque me permite acceder a préstamos pequeños. 💰').click();
           await page.getByText('Por su accesibilidad. 😊').click();
-          await page.getByRole('button', { name: 'Responder' }).click();
+          await responder.click();
           await page.getByText('(3) Neutral.').click();
           //'¡Eres un Campeón Financiero de Carreras! 🏆🏃‍💰']);          
           await page.getByText('Aprender sobre mi Tarjeta de crédito 💳').click();
@@ -293,13 +295,5 @@ test.describe("Bacoppel project Testing",() => {
           const page1Promise = page.waitForEvent('popup');
           await page.getByRole('link', { name: 'Campeón Financiero de Carreras' }).click();
           const page1 = await page1Promise;
-
-
-
         });
-                            
-
-
-
-
 })

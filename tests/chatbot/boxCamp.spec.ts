@@ -39,7 +39,7 @@ test.describe("BOX Component Testing",() => {
   });
 
 
-  test.only('Search in Gif inside Box Component test', async ({ page }) => {   
+  test('Search in Gif inside Box Component test', async ({ page }) => {   
           // Add Gif searching input  inside Box  
     await todoPage.addSearchGif();
     await todoPage.checkPreviewButton(page);

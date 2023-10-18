@@ -8,20 +8,23 @@ test.describe("Chatbot Testing",() => {
 
   test.beforeEach(async ({ page }) => {
     todoPage = new TodoPage(page);
-    await todoPage.goto();
+    await todoPage.goto('https://dboteditor-qa.opseeker.com/'); 
     await todoPage.loginCampaign(page);    
   });
 
 
 
-  test.skip('login & Create Campaings', async ({ page }) => {  
+  test('login & Create Campaings', async ({ page }) => {  
+    await page.getByText('rosana').click();
+    await page.getByText('Workspaces').click();
+    await page.getByRole('menuitem', { name: 'demo CaretRightFill' }).click();
+    await page.getByRole('menuitem', { name: 'Load' }).getByText('Load').click();
     await page.getByText('rosana').click();
     await page.getByRole('menuitem', { name: 'Campaigns' }).click();
     await page.getByRole('button', { name: 'FormAdd Create new campaign' }).click();
     await page.getByPlaceholder('Campaign name').click();
-    await page.getByPlaceholder('Campaign name').fill('playwrightTest');
+    await page.getByPlaceholder('Campaign name').fill('boxButtonTest');
     await page.getByRole('button',{ name: 'FormAdd Create' }).click();
-    await page.getByRole('button', { name: 'CloudUpload Upload changes' }).click();
     await page.getByText('rosana').click();
     await page.getByRole('menuitem', { name: 'Sign out' }).click();
     await page.getByRole('button', { name: 'Login Sign in' }).click();

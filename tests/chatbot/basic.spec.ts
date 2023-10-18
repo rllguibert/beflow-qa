@@ -16,7 +16,7 @@ test.describe("Beflow Editor Testing",() => {
       
   
 test.describe("Menu Bar Testing",() => {
-  test.only('A new blank file should be created->New File', async ({ page }) => {    
+  test('A new blank file should be created->New File', async ({ page }) => {    
     const newFileButton =  page.getByRole('button', { name: 'Yes, create a new file' });
     const newtitle = page.getByTitle('New File').locator('div').nth(1);
     const banner = page.getByRole('banner');
@@ -82,7 +82,7 @@ test.describe("Setting Panel",() => {
     const debugModeCheck = page.locator('label').filter({ hasText: 'Modo debug' }).locator('div').nth(1);
     const debugButton =  page.getByRole('button', { name: 'DocumentText Ver documento dbot' });
     const debugPanel = await page.locator('.StyledLayer__StyledContainer-sc-rmtehz-2 > div > div');
-    const salirPanelSetting = page.locator('div').filter({ hasText: 'AjustesVersion: 2.57.3IdiomaInglésEspañolEsquema de colorOpseekerChatDebugModo d' }).nth(2);
+    const salirPanelSetting = page.locator('div').filter({ hasText: 'AjustesVersion: 2.62.4IdiomaInglésEspañolEsquema de colorOpseekerChatDebugModo d' }).nth(2);
     
 
     await todoPage.loginCampaign(page);

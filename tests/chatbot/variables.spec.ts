@@ -112,9 +112,9 @@ test('Text variable', async ({ page }) => {
     await nombreVariable.fill(TODO_VARIABLES[3]);
     await calendarMuestra.click();
     await expect(calendarMuestra).toBeVisible();
-    await page.getByRole('button', { name: 'Wed Aug 30 2023' }).click();
+    await page.getByRole('button', { name: 'Thu Oct 05 2023' }).click();
     await page.getByRole('button', { name: 'FormCheckmark Create' }).click();
-    await expect(page.getByText('Wednesday, August 30, 2023')).toHaveText('Wednesday, August 30, 2023');
+    await expect(page.getByText('Thursday, October 5, 2023')).toHaveText('Thursday, October 5, 2023');
     await borrarVariable.click();
     await salirPanel.press('Escape');
   });

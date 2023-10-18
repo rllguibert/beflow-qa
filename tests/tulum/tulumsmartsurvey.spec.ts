@@ -8,7 +8,9 @@ test.describe("Tulum Smart Survey Testing",() => {
 
     test.beforeEach(async ({ page }) => {
       todoPage = new TodoPage(page);
-      await todoPage.goto('https://dbot-qa.opseeker.com/staging/tulum/tulumsmartsurvey/index.html');
+     // await todoPage.goto('https://dbot-qa.opseeker.com/staging/tulum/tulumsmartsurvey/index.html');
+
+      await todoPage.goto('https://beflow.opseeker.com/staging/tulum/tulumsmartsurvey/index.html');
       });           
 
 

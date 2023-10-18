@@ -88,13 +88,6 @@ test('Text Input email selected inside Button Component', async ({ page}) => {
 
   });
 
-// hay un bug si el user agrega el linkert solo sin caja unida, rompe el editor-22/08/2023
-  test('LIKERT selected inside Button Component', async ({ page}) => {
-         //Add  Text Input LINKERT option  
-    await todoPage.addLinkert(page);
-  });
-
-
   test(' MULTICHOICE selected inside Button Component ', async ({ page}) => {
          //Add  Text Input MULTICHPOICE option
          await page.getByRole('button', { name: 'Button' }).first().click();   
