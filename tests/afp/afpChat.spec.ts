@@ -332,9 +332,9 @@ async function sacrifcioTest(page: Page) {
   await intro.click();
   await page.waitForTimeout(20000);
    // sin data-testid
-  await page.locator('#selectionBox > div > div > div > div > div').first().click();
-  await page.locator('#selectionBox > div > div > div:nth-child(2) > div > div').first().click();
-  await page.locator('#selectionBox > div > div > div:nth-child(3) > div > div').first().click();
+   await page.locator('.likert-option-icon > div').first().click();
+   await page.locator('div:nth-child(2) > .likert-option-icon > div').click();
+   await page.locator('div:nth-child(3) > .likert-option-icon > div').click();
   await sacrificio.click();
   await page.getByText('Ahorrando en efectivo en casa').click(); // sin data-testid
   await page.getByText('Depositando en una cuenta de ahorro de una institución financiera').click(); // sin data-testid
@@ -361,9 +361,9 @@ async function planearTest(page: Page) {
   const proconst = page.getByTestId('bubble-button-37');
   const consejos = page.getByTestId('bubble-button-201');  
   await intro.click();
-  await page.locator('div:nth-child(4) > div > div').first().click(); // sin data-testid
-  await page.locator('#selectionBox > div > div > div:nth-child(5) > div > div').first().click(); // sin data-testid
-  await page.locator('#selectionBox > div > div > div > div > div').first().click();
+  await page.locator('.likert-option-icon > div').first().click();
+  await page.locator('div:nth-child(2) > .likert-option-icon > div').click();
+  await page.locator('div:nth-child(3) > .likert-option-icon > div').click();
   await planear.click();
   await page.getByText('Depositando en una cuenta de ahorro de una institución financiera').click();
   await page.getByText('Dando dinero a la familia para ahorrar en su nombre').click();
@@ -390,9 +390,9 @@ async function neutroTest(page: Page) {
   const  nocredito = page.getByTestId('bubble-button-38');
   const consejos = page.getByTestId('bubble-button-201');  
   await intro.click();
-  await page.locator('div:nth-child(4) > div > div').first().click();
-  await page.locator('#selectionBox > div > div > div:nth-child(5) > div > div').first().click(); // sin data-testid
-  await page.locator('#selectionBox > div > div > div > div > div').first().click();
+  await page.locator('.likert-option-icon > div').first().click();
+  await page.locator('div:nth-child(2) > .likert-option-icon > div').click();
+  await page.locator('div:nth-child(3) > .likert-option-icon > div').click();
   await guardar.click();
   await page.getByText('Ahorrando en otra institución fuera del sistema financiero').click();
   await page.getByText('Dando dinero a la familia para ahorrar en su nombre').click();

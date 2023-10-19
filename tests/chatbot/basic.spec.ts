@@ -82,7 +82,7 @@ test.describe("Setting Panel",() => {
     const debugModeCheck = page.locator('label').filter({ hasText: 'Modo debug' }).locator('div').nth(1);
     const debugButton =  page.getByRole('button', { name: 'DocumentText Ver documento dbot' });
     const debugPanel = await page.locator('.StyledLayer__StyledContainer-sc-rmtehz-2 > div > div');
-    const salirPanelSetting = page.locator('div').filter({ hasText: 'AjustesVersion: 2.64.2IdiomaInglésEspañolEsquema de colorOpseekerChatDebugModo d' }).nth(2);
+    const salirPanelSetting = page.locator('div').filter({ hasText: 'AjustesVersion: 2.64.3IdiomaInglésEspañolEsquema de colorOpseekerChatDebugModo d' }).nth(2);
     
 
     await todoPage.loginCampaign(page);

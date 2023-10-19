@@ -58,6 +58,7 @@ test.describe("BOX Component Testing",() => {
     // Add Link inside Box  
     await todoPage.addLink('https://en.wikipedia.org/wiki/Marathon');
     await page.getByRole('button', { name: 'ChatOption Preview' }).click();
+    await page.waitForTimeout(13000);
     const page3Promise = page.waitForEvent('popup');
     await page.getByRole('link', { name: 'marathon' }).click();
     const page3 = await page3Promise;
@@ -65,54 +66,10 @@ test.describe("BOX Component Testing",() => {
     await page3.bringToFront();
     await page3.close();
     await page.waitForTimeout(1000);
+
+
   });
-// testear la funcionalidad copiar, pegar es compleja implementarla desde playwright  
 
-
-  
-  test.skip('Should be displayed Groups panel if select many bubble at the same time', async ({ page }) => {
-    const gruposNombre = page.getByPlaceholder('Name of the new group');
-    const deSelectGrupos = page.getByRole('button', { name: 'Deselect all' });
-    const selectAll = page.getByRole('button', { name: 'See all' });
-    //const inputFill = page.getByPlaceholder('Write text here');
-    await todoPage.loginCampaign(page);      
-    await todoPage.cargaChatfromCampaign(page);   
-    await page.locator('canvas').click({
-      position: {
-        x: 490,
-        y: 313
-      }
-    });
-    await page.locator('canvas').click({
-      modifiers: ['Shift'],
-      position: {
-        x: 1179,
-        y: 707
-      }
-    });
-    await page.locator('canvas').click({
-      modifiers: ['Shift'],
-      position: {
-        x: 412,
-        y: 208
-      }
-    });
-
-    await page.waitForTimeout(1000);        
-    await gruposNombre.click();
-    await gruposNombre.fill('GrupoPrueba');
-    await page.getByRole('button', { name: 'FormCheckmark Create and add' }).click();
-    await page.getByRole('menuitem', { name: 'Groups' }).click();
-    await deSelectGrupos.click();
-    await selectAll.click();
-    await page.locator('canvas').click({
-      position: {
-        x: 378,
-        y: 220
-      }
     });
                       
-            
-        });
-
-      });
+       

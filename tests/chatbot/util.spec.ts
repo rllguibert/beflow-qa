@@ -54,7 +54,7 @@ export class TodoPage {
     this.optionGif = this.page.locator('#react-select-2-option-2');
     this.pasteGUrl = this.page.getByPlaceholder('Paste gif url here');
     this.inputSearchG = this.page.getByPlaceholder('Search in Gyphy');
-    this.inputLink = this.page.getByRole('link', { name: 'Running Man Abandon Thread GIF by MOODMAN' });
+    this.inputLink = this.page.getByRole('link', { name: '80s vhs GIF' });
     this.optionVideo = this.page.getByText('Youtube', { exact: true });
     this.pasteVUrl = this.page.getByPlaceholder('Video url');
     this.previewButton = this.page.getByRole('button', { name: 'ChatOption Preview' });
@@ -261,7 +261,7 @@ export class TodoPage {
     await this.optionSix.click();
     await this.optionSix.fill('Six');
     await this.previewButton.click();
-    await page.getByText('One').click();
+    await page.getByText('One',{ exact: true }).click();
     await page.getByText('Two').click();
     await page.getByText('Six').click();
     await page.getByTestId('bubble-bubble-0').getByRole('textbox').click();
@@ -298,7 +298,7 @@ export class TodoPage {
       await page.getByRole('button', { name: 'submit' }).click();
       await page.getByRole('menuitem', { name: 'Settings' }).click();
       await page.locator('label').filter({ hasText: 'Realtime collaboration' }).getByRole('img').click();
-      await page.locator('div').filter({ hasText: 'SettingsVersion: 2.64.2LanguageEnglishSpanishColor schemaOpseekerChatDebugDebug ' }).nth(2).press('Escape');
+      await page.locator('div').filter({ hasText: 'SettingsVersion: 2.65.2LanguageEnglishSpanishColor schemaOpseekerChatDebugDebug ' }).nth(2).press('Escape');
 
   }
   async variableCreate(page: Page) {
