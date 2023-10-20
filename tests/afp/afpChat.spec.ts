@@ -337,7 +337,7 @@ async function sacrifcioTest(page: Page) {
   await page.getByText('Ahorrando en efectivo en casa').click(); // sin data-testid
   await page.getByText('Depositando en una cuenta de ahorro de una institución financiera').click(); // sin data-testid
   await responder.click();
- // await page.pause();
+  await page.waitForTimeout(20000);
   await page.getByText('Tienes un plan mensual de seguimiento a tus ingresos y gastos').click(); 
   await page.getByText('Tienes un registro constante de tus gastos').click();
   await responder.click();
@@ -366,6 +366,7 @@ async function planearTest(page: Page) {
   await page.getByText('Depositando en una cuenta de ahorro de una institución financiera').click();
   await page.getByText('Dando dinero a la familia para ahorrar en su nombre').click();
   await responder.click();
+  await page.waitForTimeout(20000);
   await page.getByText('Separas el dinero para pagar las facturas del mes y el dinero de gastos del día ').click();
   await page.getByText('Tomas nota de las próximas facturas para asegurarte de pagarlas').click();
   await responder.click();
@@ -396,6 +397,7 @@ async function neutroTest(page: Page) {
   await page.getByText('Ahorrando en otra institución fuera del sistema financiero').click();
   await page.getByText('Dando dinero a la familia para ahorrar en su nombre').click();
   await responder.click();
+  await page.waitForTimeout(20000);
   await page.getByText('Tienes un registro constante de tus gastos').click();
   await page.getByText('Separas el dinero para pagar las facturas del mes y el dinero de gastos del día ').click();
   await responder.click();
