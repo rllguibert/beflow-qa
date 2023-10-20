@@ -47,14 +47,14 @@ export class TodoPage {
     this.barraLeft = this.page.getByTestId('sidebar');
     this.inputText = this.page.getByRole('option', { name: 'Text' });
     this.viewType = this.page.getByTestId('view-type-select');
-    this.buttonDrop = this.page.getByTestId('view-type-select').locator('svg');
+    this.buttonDrop = this.page.locator('.css-19bb58m');
     this.optionImage = this.page.getByText('Image', { exact: true });
     this.inputAltText = this.page.getByPlaceholder('Alternative text');
     this.pasteUrl = this.page.getByPlaceholder('Paste image url here');
     this.optionGif = this.page.locator('#react-select-2-option-2');
     this.pasteGUrl = this.page.getByPlaceholder('Paste gif url here');
     this.inputSearchG = this.page.getByPlaceholder('Search in Gyphy');
-    this.inputLink = this.page.getByRole('link', { name: 'Running Man Abandon Thread GIF by MOODMAN' });
+    this.inputLink = this.page.getByRole('link', { name: '80s vhs GIF' });
     this.optionVideo = this.page.getByText('Youtube', { exact: true });
     this.pasteVUrl = this.page.getByPlaceholder('Video url');
     this.previewButton = this.page.getByRole('button', { name: 'ChatOption Preview' });
@@ -107,7 +107,7 @@ export class TodoPage {
     
     await this.buttonDrop.click();
     await this.optionImage.click();
-    await page.waitForTimeout(30000);
+    await page.pause();
     const fileChooserPromise = page.waitForEvent('filechooser');
     await page.getByText('browse').click();
     const fileChooser = await fileChooserPromise;
@@ -163,10 +163,9 @@ export class TodoPage {
     await this.mensajeAviso.fill('Error!, escribe un texto');
     await this.previewButton.click();
     await this.helpText.click();
-    await this.helpText.fill('Qa manager');
-    await this.helpText.press('Enter'); 
-    await page.waitForTimeout(10000);
-
+    await page.getByPlaceholder('Escribe un texto').click();
+    await page.getByPlaceholder('Escribe un texto').fill('QA Manager');
+    await page.getByPlaceholder('Escribe un texto').press('Enter');
   }
 
 
@@ -182,8 +181,9 @@ export class TodoPage {
     await this.mensajeAviso.fill('Error!, revisa el email');
     await this.previewButton.click();
     await this.helpText.click();
-    await this.helpText.fill('tester@gmail.com'); 
-    await this.helpText.press('Enter'); 
+    await page.getByPlaceholder('Escribe tu correo electronico').click();
+    await page.getByPlaceholder('Escribe tu correo electronico').fill('tester@gmail.com');
+    await page.getByPlaceholder('Escribe tu correo electronico').press('Enter');
     await page.waitForTimeout(10000);
   }
 
@@ -195,16 +195,16 @@ export class TodoPage {
     await this.optionTextButton.click(); 
     await this.verificationText.click();
     await this.numberButton.click();
+    await this.helpText.click();
     await this.helpText.fill('Escribe un numero');
     await this.mensajeAviso.click();
     await this.mensajeAviso.fill('Error!, no es un numero');
     await this.previewButton.click();
-    await this.helpText.click();      
-    await this.previewButton.click();  
-    await this.helpText.click();
-    await this.helpText.fill('8');
-    await this.helpText.press('Enter');
-    await page.waitForTimeout(10000);
+    await this.helpText.click();  
+    await this.previewButton;  
+    await page.getByPlaceholder('Escribe un numero').click();
+    await page.getByPlaceholder('Escribe un numero').fill('8');
+    await page.getByPlaceholder('Escribe un numero').press('Enter');
   }
 
 
@@ -227,17 +227,15 @@ export class TodoPage {
 
 
   async addLinkert(page: Page) {
-    await page.getByRole('button', { name: 'Box and two buttons' }).click();    
-    await page.getByPlaceholder('Write text here').fill('linkert');
-    await page.locator('canvas').first().click({
-      position: {
-        x: 1497,
-        y: 553
-      }
-    });
-    await this.buttonDrop.click();
-    await this.linkertButton.click();
-    await this.previewButton.click();
+    await page.getByRole('img', { name: 'ChapterAdd' }).click();
+    await page.getByRole('button', { name: 'Box', exact: true }).click();
+    await page.getByPlaceholder('Write text here').fill('likert');
+    await page.getByRole('img', { name: 'ChapterAdd' }).click();
+    await page.getByRole('button', { name: 'Button', exact: true }).click();
+    await page.locator('.css-19bb58m').click();
+    await page.getByText('Likert', { exact: true }).dblclick();
+    await page.getByRole('button', { name: 'ChatOption Preview' }).click();
+    await page.locator('#selectionBox > div > div > div > div > div').first().click();
     await page.locator('div > div:nth-child(4) > div > div').first().click();
   }
 
@@ -263,7 +261,7 @@ export class TodoPage {
     await this.optionSix.click();
     await this.optionSix.fill('Six');
     await this.previewButton.click();
-    await page.getByText('One').click();
+    await page.getByText('One',{ exact: true }).click();
     await page.getByText('Two').click();
     await page.getByText('Six').click();
     await page.getByTestId('bubble-bubble-0').getByRole('textbox').click();
@@ -272,6 +270,7 @@ export class TodoPage {
     await page.close();
   }
   async checkPreviewButton(page: Page) {
+    await page.waitForTimeout(12000);
     await this.previewButton.click();
     await page.waitForTimeout(10000);
     await expect(page.getByRole('banner')).toBeVisible();
@@ -279,7 +278,7 @@ export class TodoPage {
     await page.waitForTimeout(10000);
 }
   async cargaChatfromCampaign(page: Page) {
-    await page.getByText('rosana').click();
+    await page.getByText('rosana').click();    
     await page.getByText('Workspaces').click();
     await page.getByRole('menuitem', { name: 'demo CaretRightFill' }).click();
     await page.getByRole('menuitem', { name: 'Load' }).getByText('Load').click();
@@ -297,6 +296,9 @@ export class TodoPage {
       await page.getByRole('textbox', { name: 'Password' }).click();
       await page.getByRole('textbox', { name: 'Password' }).fill('samuel2013*/');
       await page.getByRole('button', { name: 'submit' }).click();
+      await page.getByRole('menuitem', { name: 'Settings' }).click();
+      await page.locator('label').filter({ hasText: 'Realtime collaboration' }).getByRole('img').click();
+      await page.locator('div').filter({ hasText: 'SettingsVersion: 2.65.2LanguageEnglishSpanishColor schemaOpseekerChatDebugDebug ' }).nth(2).press('Escape');
 
   }
   async variableCreate(page: Page) {
