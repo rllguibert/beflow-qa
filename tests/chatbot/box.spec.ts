@@ -35,7 +35,7 @@ test.describe("BOX Component Testing",() => {
   });
 
 
-  test.only('Search in Gif inside Box Component test', async ({ page }) => {   
+  test('Search in Gif inside Box Component test', async ({ page }) => {   
           // Add Gif searching input  inside Box  
     await todoPage.addSearchGif();
     await todoPage.checkPreviewButton(page);
@@ -43,9 +43,7 @@ test.describe("BOX Component Testing",() => {
   });
 
   test('Youtube inside Box Component test', async ({ page }) => {
-  const addBox = page.getByRole('menuitem', { name: 'ChapterAdd' }).locator('svg')
    await todoPage.addVideo('https://youtu.be/l7gTMTr69N0');
-   await addBox.press('Escape');
    await page.getByRole('button', { name: 'ChatOption Preview' }).click();
    await page.waitForTimeout(10000);
    await page.getByTestId('bubble-bubble-0').click({force: true});
@@ -53,10 +51,8 @@ test.describe("BOX Component Testing",() => {
   });
 
   test('Link inside Box Component test', async ({ page }) => {  
-    const addBox = page.getByRole('menuitem', { name: 'ChapterAdd' }).locator('svg')
     // Add Link inside Box  
     await todoPage.addLink('https://en.wikipedia.org/wiki/Marathon');
-    await addBox.press('Escape');
     await page.getByRole('button', { name: 'ChatOption Preview' }).click();
     const page3Promise = page.waitForEvent('popup');
     await page.getByRole('link', { name: 'marathon' }).click();
